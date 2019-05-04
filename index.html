@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Release: v316.0 -->
+    <title>PyTexas</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="PyTexas is the annual, regional gathering for the Python community in Texas, taking place April 13th and 14th in Austin, TX">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/static-2019/favicon.e0ef81ea0dfa.ico">
+
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      #splash {
+        height: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #splash img {
+        width: 128px;
+      }
+
+      .iconbg {
+        background-position: top center;
+        background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url(/static-2019/img/icons/background.e5e4f4cb920f.png);
+        background-size: 100%;
+      }
+
+      .svg-group .v-list__group__header__prepend-icon i {
+        width: 24px;
+      }
+
+      .svg-group.about .v-list__group__header__prepend-icon i {
+        background-image: url(/static-2019/img/icons/about.764234acc6c0.svg);
+      }
+
+      .svg-group.community .v-list__group__header__prepend-icon i {
+        background-image: url(/static-2019/img/icons/community.fefb33f67adc.svg);
+      }
+    </style>
+
+    <!--temp fonts-->
+    <link href="//fonts.googleapis.com/css?family=Roboto|Roboto+Slab|Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="/static-2019/vuetify.min.4ee7ed0d3bfa.css">
+    <link rel="stylesheet" href="/static-2019/global.6c2e85abb395.css">
+    <link rel="stylesheet" href="/static-2019/pytexas.5c0e03dfb39f.css">
+
+  </head>
+  <body>
+    <div id="splash">
+      <img src="/static-2019/img/banner80.39225f4a7c1f.png" alt="PyTexas">
+    </div>
+    <div id="pytxapp" style="display: none;">
+      <pytx-app :needs-update="needs_update"></pytx-app>
+    </div>
+    <script>
+      if (typeof Object.assign != 'function' || !Array.from || typeof Object.values != 'function') {
+        document.write('<script src="/static-2019/polyfill.b06976a9cea9.js"><\/script>');
+      }
+    </script>
+    <script>
+      var DEBUG = false;
+      var YEAR = 2019;
+      var URLS = {
+        main: 'https://www.pytexas.org',
+        static: '/static-2019/',
+        login: {
+          google: '/auth/social/login/google-oauth2/'
+        },
+        md: {
+          'venue.md': '/static-2019/md/venue.e2ee2d8c8004.md',
+          'sponsors/prospectus.md': '/static-2019/md/sponsors/prospectus.0f8b25c8386c.md',
+          'community/employers.md': '/static-2019/md/community/employers.9257ae065143.md',
+          'community/chat.md': '/static-2019/md/community/chat.d74320211d3b.md',
+          'community/mailing-list.md': '/static-2019/md/community/mailing-list.a577ad78bb26.md',
+          'community/meetups.md': '/static-2019/md/community/meetups.41334131fef2.md',
+          'about/volunteering.md': '/static-2019/md/about/volunteering.4aba0e4c0811.md',
+          'about/conference.md': '/static-2019/md/about/conference.0409dd947791.md',
+          'about/grants.md': '/static-2019/md/about/grants.78277bbd1bb7.md',
+          'about/registration.md': '/static-2019/md/about/registration.3389bb22c19e.md',
+          'about/privacy.md': '/static-2019/md/about/privacy.e1c9ca5ba45c.md',
+          'about/code-of-conduct.md': '/static-2019/md/about/code-of-conduct.00a66b7f860f.md',
+          'about/diversity-statement.md': '/static-2019/md/about/diversity-statement.5d7d105cccca.md',
+          'about/faq.md': '/static-2019/md/about/faq.5a0479f48718.md',
+          'talks/speaking.md': '/static-2019/md/talks/speaking.fd11936b58ec.md'
+
+        }
+      };
+      var APP = {
+        name: 'PyTexas',
+        icon: '/static-2019/img/icon.d99d2b99008d.svg'
+      };
+
+      var IMAGES = {
+        "img/atx.svg": "/static-2019/img/atx.3ab5136e351b.svg",
+        "img/banner80.png": "/static-2019/img/banner80.39225f4a7c1f.png",
+        "img/icon.svg": "/static-2019/img/icon.d99d2b99008d.svg",
+        "img/icons/about.svg": "/static-2019/img/icons/about.764234acc6c0.svg",
+        "img/icons/blog.svg": "/static-2019/img/icons/blog.13fb6a09bcb5.svg",
+        "img/icons/chat.svg": "/static-2019/img/icons/chat.9843a75b860d.svg",
+        "img/icons/talks.svg": "/static-2019/img/icons/talks.9843a75b860d.svg",
+        "img/icons/community.svg": "/static-2019/img/icons/community.fefb33f67adc.svg",
+        "img/icons/sponsors.svg": "/static-2019/img/icons/sponsors.3cf80e0dcd9a.svg",
+        "img/icons/venue.svg": "/static-2019/img/icons/venue.4370b746c0cd.svg",
+        "img/icons/external.svg": "/static-2019/img/icons/external.f9289b910493.svg",
+        "img/icons/external-white.svg": "/static-2019/img/icons/external-white.d945d98d7fb0.svg",
+        "img/icons/background.png": "/static-2019/img/icons/background.e5e4f4cb920f.png",
+        "img/social/about.me.png": "/static-2019/img/social/about.me.f65a5145d048.png",
+        "img/social/facebook.png": "/static-2019/img/social/facebook.287207afff4d.png",
+        "img/social/github.png": "/static-2019/img/social/github.c3ec7b84d61f.png",
+        "img/social/google.png": "/static-2019/img/social/google.fa243b13d494.png",
+        "img/social/linkedin.png": "/static-2019/img/social/linkedin.7ebd98e43085.png",
+        "img/social/twitter.png": "/static-2019/img/social/twitter.d66f6b578aef.png",
+        "img/social/website.png": "/static-2019/img/social/website.e664e4203b87.png"
+
+      };
+
+      var REGISTRATION = null;
+      var API_DATA = null;
+      var API_DATA_TS = null;
+      var RELEASE = 'v316.0';
+      var UPDATE_NEEDED = false;
+      var SKIP_SW = false;
+      var ROUTE_HREF = false;
+    </script>
+
+    <script type="text/x-template" id="tpl-404">
+      <div class="404-page">
+  <v-card class="padding">
+    <h1 class="tc">404 - Page Not Found</h1>
+  </v-card>
+</div>
+
+    </script>
+
+    <script src="/static-2019/pytexas.8c010be8a206.js"></script>
+  </body>
+</html>
