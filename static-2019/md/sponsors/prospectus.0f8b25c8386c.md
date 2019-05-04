@@ -21,7 +21,7 @@ Phone: 512-739-2938
 **Estimated attendance:**
 We expect ~200 attendees for PyTexas 2019.
 
-**<a href="/2019/page/about/code-of-conduct">Code of Conduct &raquo;</a>**
+**<a href="/page/about/code-of-conduct">Code of Conduct &raquo;</a>**
 
 **Audience Profile:**<br>
 Professional Python developers, data scientists, amateurs, students, software
